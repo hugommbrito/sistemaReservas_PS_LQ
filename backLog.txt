@@ -1,0 +1,3 @@
+- Implementar verificação se usuário logado é o mesmo sendo alterado (rotas de user.update e user.delete)
+- Implemetar validador de CPF
+- Corrigir async error que não está capturando no middleware de email/cpf unico

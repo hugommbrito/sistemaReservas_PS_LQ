@@ -37,7 +37,7 @@ export class User {
 	is_staff: boolean;
 
 	@Column({ type: 'date' })
-	date_birth: string;
+	date_birth: string | Date;
 
 	@CreateDateColumn({ type: 'date' })
 	createdAt: string;

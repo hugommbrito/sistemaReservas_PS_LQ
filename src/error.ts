@@ -13,12 +13,13 @@ class AppError extends Error {
 }
 
 const handleErrors = (
-	err: any,
+	err: Error,
 	req: Request,
 	res: Response,
 	next: NextFunction
 ) => {
 	if (err instanceof AppError) {
+		console.log('DEU AQUIGA AQUI ⚠️');
 		return res.status(err.statusCode).json({
 			message: err.message,
 		});
