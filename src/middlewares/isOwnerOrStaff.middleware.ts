@@ -6,7 +6,6 @@ export const isOwnerOrStaffMdwr = (
 	res: Response,
 	next: NextFunction
 ): Response | void => {
-	console.log(req.user);
 	if (req.user.isStaff) {
 		return next();
 	}

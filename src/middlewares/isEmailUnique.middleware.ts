@@ -17,7 +17,7 @@ export const isEmailCpfUniqueMdwr = async (
 				email: req.body.email,
 			},
 		});
-		console.log(isEmailExists);
+
 		if (isEmailExists) {
 			throw new AppError('Email already exists', 405);
 		}
