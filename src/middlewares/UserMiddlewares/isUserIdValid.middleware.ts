@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { iUserRepo } from '../interfaces/user.interface';
-import { AppDataSource } from '../data-source';
-import { User } from '../entities';
-import { AppError } from '../error';
+import { iUserRepo } from '../../interfaces/user.interface';
+import { AppDataSource } from '../../data-source';
+import { User } from '../../entities';
+import { AppError } from '../../error';
 
 export const isUserIdValidMdwr = async (
 	req: Request,

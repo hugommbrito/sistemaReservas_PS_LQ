@@ -1,2 +1,5 @@
-- Implementar verificação se usuário logado é o mesmo sendo alterado (rotas de user.update e user.delete)
+✅ Implementar verificação se usuário logado é o mesmo sendo alterado (rotas de user.update e user.delete)
 - Implemetar validador de CPF
+- Implementar Rotas de Tables
+- Implementar Rotas de Reservations
+

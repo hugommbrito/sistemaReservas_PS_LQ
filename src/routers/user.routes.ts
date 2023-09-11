@@ -2,11 +2,11 @@ import { Router } from 'express';
 import { validateDataMdwr } from '../middlewares/validateData.middleware';
 import { userSchema } from '../schemas';
 import userControllers from '../controllers/user.controllers';
-import { isEmailCpfUniqueMdwr } from '../middlewares/isEmailUnique.middleware';
-import { isOwnerOrStaffMdwr } from '../middlewares/isOwnerOrStaff.middleware';
-import { validateTokenMdwr } from '../middlewares/validateToken.middleware';
-import { isStaffMdwr } from '../middlewares/isStaff.middleware';
-import { isUserIdValidMdwr } from '../middlewares/isUserIdValid.middleware';
+import { isEmailCpfUniqueMdwr } from '../middlewares/UserMiddlewares/isEmailCpfUnique.middleware';
+import { isOwnerOrStaffMdwr } from '../middlewares/AuthMiddlewares/isOwnerOrStaff.middleware';
+import { validateTokenMdwr } from '../middlewares/AuthMiddlewares/validateToken.middleware';
+import { isStaffMdwr } from '../middlewares/AuthMiddlewares/isStaff.middleware';
+import { isUserIdValidMdwr } from '../middlewares/UserMiddlewares/isUserIdValid.middleware';
 
 export const userRouter = Router();
 
