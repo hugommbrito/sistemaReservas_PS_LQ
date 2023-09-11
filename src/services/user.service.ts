@@ -15,7 +15,7 @@ const create = async (payload: iUserPost): Promise<iUserGet> => {
 	return newUserData;
 };
 
-const getAll = async (): Promise<iUserGet[]> => {
+const readAll = async (): Promise<iUserGet[]> => {
 	const userRepository: iUserRepo = AppDataSource.getRepository(User);
 
 	const allUsers: User[] = await userRepository.find();
@@ -87,4 +87,4 @@ const changeStaff = async (idUser: string): Promise<iMessageUserResponse> => {
 	return { message: responseMessage, user: updatedUser };
 };
 
-export default { create, getAll, update, deleter, changeStaff };
+export default { create, readAll, update, deleter, changeStaff };

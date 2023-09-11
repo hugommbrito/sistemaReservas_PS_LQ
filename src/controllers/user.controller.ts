@@ -8,8 +8,8 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 	return res.status(201).json(newUser);
 };
 
-const getAll = async (req: Request, res: Response): Promise<Response> => {
-	const allUsers: iUserGet[] = await userService.getAll();
+const readAll = async (req: Request, res: Response): Promise<Response> => {
+	const allUsers: iUserGet[] = await userService.readAll();
 	return res.status(200).json(allUsers);
 };
 
@@ -36,4 +36,4 @@ const changeStaff = async (req: Request, res: Response): Promise<Response> => {
 	return res.status(200).json(updatedUser);
 };
 
-export default { create, getAll, update, deleter, changeStaff };
+export default { create, readAll, update, deleter, changeStaff };

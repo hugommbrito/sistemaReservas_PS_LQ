@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { validateDataMdwr } from '../middlewares/validateData.middleware';
 import { userSchema } from '../schemas';
-import userControllers from '../controllers/user.controllers';
+import { userController } from '../controllers';
 import { isEmailCpfUniqueMdwr } from '../middlewares/UserMiddlewares/isEmailCpfUnique.middleware';
 import { isOwnerOrStaffMdwr } from '../middlewares/AuthMiddlewares/isOwnerOrStaff.middleware';
 import { validateTokenMdwr } from '../middlewares/AuthMiddlewares/validateToken.middleware';
@@ -14,10 +14,10 @@ userRouter.post(
 	'',
 	validateDataMdwr(userSchema.post),
 	isEmailCpfUniqueMdwr,
-	userControllers.create
+	userController.create
 );
 
-userRouter.get('', validateTokenMdwr, isStaffMdwr, userControllers.getAll);
+userRouter.get('', validateTokenMdwr, isStaffMdwr, userController.readAll);
 
 userRouter.patch(
 	'/:userID',
@@ -25,7 +25,7 @@ userRouter.patch(
 	isUserIdValidMdwr,
 	isOwnerOrStaffMdwr,
 	isEmailCpfUniqueMdwr,
-	userControllers.update
+	userController.update
 );
 
 userRouter.delete(
@@ -33,7 +33,7 @@ userRouter.delete(
 	validateTokenMdwr,
 	isUserIdValidMdwr,
 	isOwnerOrStaffMdwr,
-	userControllers.deleter
+	userController.deleter
 );
 
 userRouter.patch(
@@ -41,5 +41,5 @@ userRouter.patch(
 	validateTokenMdwr,
 	isUserIdValidMdwr,
 	isStaffMdwr,
-	userControllers.changeStaff
+	userController.changeStaff
 );

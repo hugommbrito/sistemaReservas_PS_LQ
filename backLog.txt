@@ -1,5 +1,7 @@
 ✅ Implementar verificação se usuário logado é o mesmo sendo alterado (rotas de user.update e user.delete)
 - Implemetar validador de CPF
-- Implementar Rotas de Tables
-- Implementar Rotas de Reservations
+✅ Implementar Rotas de Tables (CRUD)
+- Implementar Rotas de Reservations (CRUD)
 
+- Atualizar Arquitetura de Solução
+- Redigir o ReadMe
