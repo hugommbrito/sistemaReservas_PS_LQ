@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { iUserRepo } from '../interfaces/user.interface';
-import { AppDataSource } from '../data-source';
-import { User } from '../entities';
-import { AppError } from '../error';
+import { iUserRepo } from '../../interfaces/user.interface';
+import { AppDataSource } from '../../data-source';
+import { User } from '../../entities';
+import { AppError } from '../../error';
 
 export const isEmailCpfUniqueMdwr = async (
 	req: Request,
@@ -10,18 +10,21 @@ export const isEmailCpfUniqueMdwr = async (
 	next: NextFunction
 ): Promise<void> => {
 	const userRepository: iUserRepo = AppDataSource.getRepository(User);
+
 	if (req.body.email) {
-		const isEmailExists: User | null = await userRepository.findOne({
+		const isEmailExists: boolean = await userRepository.exist({
 			where: {
 				email: req.body.email,
 			},
 		});
-		console.log(isEmailExists);
+
 		if (isEmailExists) {
 			throw new AppError('Email already exists', 405);
 		}
-	} else if (req.body.cpf) {
-		const isCpfExists: User | null = await userRepository.findOne({
+	}
+
+	if (req.body.cpf) {
+		const isCpfExists: boolean = await userRepository.exist({
 			where: {
 				cpf: req.body.cpf,
 			},

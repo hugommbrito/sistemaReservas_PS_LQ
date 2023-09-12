@@ -1,8 +1,12 @@
 import { Router } from 'express';
 import { validateDataMdwr } from '../middlewares/validateData.middleware';
 import { userSchema } from '../schemas';
-import userControllers from '../controllers/user.controllers';
-import { isEmailCpfUniqueMdwr } from '../middlewares/isEmailUnique.middleware';
+import { userController } from '../controllers';
+import { isEmailCpfUniqueMdwr } from '../middlewares/UserMiddlewares/isEmailCpfUnique.middleware';
+import { isOwnerOrStaffMdwr } from '../middlewares/AuthMiddlewares/isOwnerOrStaff.middleware';
+import { validateTokenMdwr } from '../middlewares/AuthMiddlewares/validateToken.middleware';
+import { isStaffMdwr } from '../middlewares/AuthMiddlewares/isStaff.middleware';
+import { isUserIdValidMdwr } from '../middlewares/UserMiddlewares/isUserIdValid.middleware';
 
 export const userRouter = Router();
 
@@ -10,14 +14,32 @@ userRouter.post(
 	'',
 	validateDataMdwr(userSchema.post),
 	isEmailCpfUniqueMdwr,
-	userControllers.create
+	userController.create
 );
+
+userRouter.get('', validateTokenMdwr, isStaffMdwr, userController.readAll);
 
 userRouter.patch(
 	'/:userID',
-	// validateDataMdwr(userSchema.patch),
+	validateDataMdwr(userSchema.patch),
+	isUserIdValidMdwr,
+	isOwnerOrStaffMdwr,
 	isEmailCpfUniqueMdwr,
-	userControllers.update
+	userController.update
 );
 
-userRouter.delete('/:userID', userControllers.deleter);
+userRouter.delete(
+	'/:userID',
+	validateTokenMdwr,
+	isUserIdValidMdwr,
+	isOwnerOrStaffMdwr,
+	userController.deleter
+);
+
+userRouter.patch(
+	'/changeStaff/:userID',
+	validateTokenMdwr,
+	isUserIdValidMdwr,
+	isStaffMdwr,
+	userController.changeStaff
+);

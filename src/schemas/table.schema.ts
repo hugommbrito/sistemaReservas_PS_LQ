@@ -7,7 +7,7 @@ const post = z.object({
 });
 
 const request = post.extend({
-	created_by: userSchema.get,
+	created_by: userSchema.post,
 });
 
 const get = request.extend({

@@ -32,7 +32,7 @@ const login = async (payload: iAuthLogin): Promise<iAuthToken> => {
 	const token: iAuthToken['token'] = jwt.sign(
 		{
 			id: loggedUser.id,
-			staff: loggedUser.is_staff,
+			isStaff: loggedUser.is_staff,
 			deletedAt: loggedUser.deletedAt,
 		},
 		process.env.SECRET_KEY!,
