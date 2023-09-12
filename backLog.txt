@@ -2,6 +2,7 @@
 - Implemetar validador de CPF
 ✅ Implementar Rotas de Tables (CRUD)
 - Implementar Rotas de Reservations (CRUD)
+- Implementar usuário admin na migração
 
 - Atualizar Arquitetura de Solução
 - Redigir o ReadMe
